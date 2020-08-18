@@ -1,35 +1,74 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Bookers2.0</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <script src="https://kit.fontawesome.com/49e942acef.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <h3 class="navbar-brand m-0 pt-0">Bookers</h3>
-    <div class="collapse navbar-collapse">
-      <ul class="nav justify-content-end pr-5">
-        <li class="nav-item pr-5">
-          <%= link_to "Home", new_user_registration_path %>
+  <header class="navbar-dark bg-dark">
+    <div class="container">
+      <nav class="nav navbar-nav navbar-left ">
+        <span class="navbar-brand">Bookers</span>
+      </nav>
+      <ul class="nav justify-content-end">
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to user_path(current_user.id) do %>
+          <span class="glyphicon glyphicon-home" aria-hidden="true"></span> home
+          <% end %>
         </li>
-        <li class="nav-item pr-5">
-          <%= link_to "About", new_user_registration_path %>
+        <li>
+          <%= link_to user_path(current_user.id) do%>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
+          <% end %>
         </li>
-        <li class="nav-item pr-5">
-          <%= link_to "sign up", new_user_registration_path %>
+        <li>
+          <%= link_to user_path(current_user.id) do%>
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers
+          <% end %>
         </li>
-        <li class="nav-item pr-5">
-          <%= link_to "login", new_user_session_path %>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> log out
+          <% end %>
         </li>
+        <% else %>
+        <li>
+          <%= link_to home_top_path do %>
+          <i class="fas fa-home"></i> Home
+          <% end %>
+        </li>
+        <li>
+          <%= link_to home_about_path do %>
+          <i class="fas fa-link"></i> About
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_registration_path do %>
+          <i class="fas fa-user-check"></i> sign up
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+          <i class="fas fa-sign-in-alt"></i> log in
+          <% end %>
+        </li>
+        <% end %>
       </ul>
     </div>
-  </nav>
-  <%= yield %>
+  </header><!-- /header -->
+  <div class="container">
+    <%= yield %>
+    <div class="row">
+      <small class="offset-8">©CopyRight Infratop.inc</small>
+    </div>
+  </div>
 </body>
 </html>
