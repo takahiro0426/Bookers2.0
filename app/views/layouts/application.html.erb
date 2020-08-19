@@ -12,50 +12,51 @@
 </head>
 
 <body>
-  <header class="navbar-dark bg-dark">
+  <header class="nav navbar-dark bg-dark">
     <div class="container">
-      <nav class="nav navbar-nav navbar-left ">
-        <span class="navbar-brand">Bookers</span>
+      <div class="row">
+      <nav class="nav navbar-left ">
+        <span class="nav navbar-brand p-0 m-0">Bookers</span>
       </nav>
-      <ul class="nav justify-content-end">
+      <ul class="nav ml-auto">
         <% if user_signed_in? %>
-        <li>
+        <li nav-item>
           <%= link_to user_path(current_user.id) do %>
           <span class="glyphicon glyphicon-home" aria-hidden="true"></span> home
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to user_path(current_user.id) do%>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to user_path(current_user.id) do%>
           <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> log out
           <% end %>
         </li>
         <% else %>
-        <li>
-          <%= link_to home_top_path do %>
+        <li nav-item>
+          <%= link_to root_path do %>
           <i class="fas fa-home"></i> Home
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to home_about_path do %>
           <i class="fas fa-link"></i> About
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to new_user_registration_path do %>
           <i class="fas fa-user-check"></i> sign up
           <% end %>
         </li>
-        <li>
+        <li nav-item>
           <%= link_to new_user_session_path do %>
           <i class="fas fa-sign-in-alt"></i> log in
           <% end %>
@@ -63,8 +64,10 @@
         <% end %>
       </ul>
     </div>
+  </div>
   </header><!-- /header -->
   <div class="container">
+    <%= render 'layouts/notifications' %>
     <%= yield %>
     <div class="row">
       <small class="offset-8">©CopyRight Infratop.inc</small>
