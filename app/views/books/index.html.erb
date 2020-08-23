@@ -13,14 +13,13 @@
 				</tr>
 			</thead>
 			<% @books.each do |book| %>
-			<% if book.user.id == @user.id %>
 			<tr>
 				<th><%= attachment_image_tag book.user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %></th>
-				<th><%= link_to book.title, book_path(book) %> </th>
+				<th><%= book.title %> </th>
 				<th><%= book.body %> </th>
 			</tr>
-			<% end %>
 			<% end %>
 		</table>
 	</div>
 </div>
+

@@ -1,17 +1,13 @@
-<div class="user_mene col-3">
-  <% if user_signed_in? %>
+<div class="user_mene">
 
-    <h2>User info</h2>
-    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg" %>
-    <table class="table">
-      <tr><th>name</th><td><%= user.name %></td></tr>
-      <tr><th>introduction</th><td><%= user.introduction %></td></tr>
-    </table>
+  <h2>User info</h2>
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg" %>
+  <table class="table">
+    <tr><th>name</th><td><%= user.name %></td></tr>
+    <tr><th>introduction</th><td><%= user.introduction %></td></tr>
+  </table>
 
-    <%= link_to edit_user_path(user) do %>
-    <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
-    <% end %>
-
-
-      <% end %>
+  <%= link_to edit_user_path(user) do %>
+  <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+  <% end %>
 </div>

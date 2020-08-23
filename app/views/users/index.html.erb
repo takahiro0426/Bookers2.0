@@ -1,23 +1,24 @@
-
-<%= render partial: 'users/user_mene', locals: { user: @user } %>
-
-<div class="col-9">
-	<h2>Users</h2>
-	<div class="col9">
+<div class="row">
+	<div class="col-3">
+		<%= render partial: 'users/user_mene', locals: { user: @user } %>
+		<%= render partial: 'books/new', locals: { review: @review } %>
+	</div>
+	<div class="col-9">
+		<h2>Users</h2>
 		<table class="table">
 			<thead>
-			<tr><th>image</th>
-				<th>name</th>
-				<th></th>
+				<tr><th>image</th>
+					<th>name</th>
+					<th></th>
+				</tr>
+			</thead>
+			<% @users.each do |user| %>
+			<tr>
+				<th><%= attachment_image_tag user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %></th>
+				<th><%= user.name %> </th>
+				<th><%= link_to "show",user_path(user.id) %></th>
 			</tr>
-		</thead>
-		<% @users.each do |user| %>
-		<tr>
-			<th><%= attachment_image_tag user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %></th>
-			<th><%= user.name %> </th>
-			<th><%= "Show" %></th>
-		</tr>
-		<% end %>
+			<% end %>
 		</table>
 	</div>
 </div>

@@ -31,7 +31,7 @@
             <% end %>
           </li>
           <li nav-item>
-            <%= link_to user_path(current_user.id) do%>
+            <%= link_to books_path(current_user.id) do%>
             <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers
             <% end %>
           </li>
@@ -68,10 +68,8 @@
   </header><!-- /header -->
   <div class="container">
     <%= render 'layouts/notifications' %>
-    <div class="row">
     <%= yield %>
     </div>
-    <div class="row">
       <small class="offset-8">©CopyRight Infratop.inc</small>
     </div>
   </div>

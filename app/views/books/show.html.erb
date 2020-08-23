@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-3">
+		<%= render partial: 'users/user_mene', locals: { user: @user } %>
+		<%= render partial: 'books/new', locals: { review: @review } %>
+	</div>
+	<div class="col-9">
+		<h2>Book detail</h2>
+		<table class="table">
+			<tr>
+				<th><%= attachment_image_tag @user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %></th>
+				<th><%= @review.title %> </th>
+				<th><%= @review.body %></th>
+				<th><%= link_to  do %>
+				<button class="btn btn-success">Edit</button>
+				<% end %></th>
+				<th><%= link_to books_path(current_user.id) ,method: :delete do%>
+				<button class="btn btn-danger">Destroy</button>
+				<% end %></th>
+			</tr>
+			<tr>
+				<%= link_to @user.name ,user_path(@user.id) %>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+
+<div class="new_book">
+<h1>New book</h1>
+  <%= form_for review do |f| %>
+  <div field>
+    <%= f.label :Title %>
+    <%= f.text_field :title, class:"form_contfol" %>
+  </div>
+  <div field>
+    <%= f.label :Opinion %>
+    <%= f.text_area :body, class:"form_confol" %>
+  </div>
+  <%= f.submit "Create Book", class: "btn btn-primary my-2" %>
+  <% end %>
+
+</div>
