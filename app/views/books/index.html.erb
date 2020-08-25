@@ -1,25 +1,40 @@
-<div class="row">
-	<div class="col-3">
-		<%= render partial: 'users/user_mene', locals: { user: @user } %>
-		<%= render partial: 'books/new', locals: { review: @review } %>
-	</div>
-	<div class="col-9">
-		<h2>Books</h2>
-		<table class="table">
-			<thead>
-				<tr><th></th>
-					<th>Title</th>
-					<th>Opinion</th>
-				</tr>
-			</thead>
-			<% @books.each do |book| %>
-			<tr>
-				<th><%= attachment_image_tag book.user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %></th>
-				<th><%= book.title %> </th>
-				<th><%= book.body %> </th>
-			</tr>
+<div class="container">
+	<% if @review.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= @review.errors.count %>errors prohibited this obj from being saved:</h2>
+		<ul>
+			<% @review.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
 			<% end %>
-		</table>
+		</ul>
+	</div>
+	<% end %>
+	<%= render 'layouts/notifications' %>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= render partial: 'users/user_menu', locals: { user: @user } %>
+			<%= render partial: 'books/new', locals: { review: @review } %>
+		</div>
+		<div class="col-xs-9">
+			<h2>Books</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr><th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<% @books.each do |book| %>
+				<tr>
+					<td><%= link_to user_path(book.user.id) do %>
+						<%= attachment_image_tag book.user,:profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40', class: " pull-left" %>
+						<% end %>
+						<td><%= link_to book.title, book_path(book) %></td>
+						<td><%= book.body %></td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
-

@@ -1,4 +1,5 @@
-<div class="user_mene">
+
+<div class="user_menu">
 
   <h2>User info</h2>
   <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg" %>
@@ -7,7 +8,13 @@
     <tr><th>introduction</th><td><%= user.introduction %></td></tr>
   </table>
 
+  <% if current_user.id == user.id %>
   <%= link_to edit_user_path(user) do %>
   <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+  <% end %>
+  <% else %>
+  <%= link_to user_path(current_user.id) do %>
+  <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+  <% end %>
   <% end %>
 </div>

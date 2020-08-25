@@ -12,66 +12,61 @@
 </head>
 
 <body>
-  <header class="nav navbar-dark bg-dark">
+  <header class="nav navbar-inverse">
     <div class="container">
-      <div class="row">
-        <nav class="nav navbar-left ">
-          <span class="nav navbar-brand p-0 m-0">Bookers</span>
-        </nav>
-        <ul class="nav ml-auto">
-          <% if user_signed_in? %>
-          <li nav-item>
-            <%= link_to user_path(current_user.id) do %>
-            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> home
+      <div class="nav navbar-left">
+        <h3 class="nav navbar text-white p-0 m-0">Bookers</h3>
+      </div>
+       <nav class="nav navbar navbar-right m-0 p-0">
+       <ul class="nav navbar m-0 p-0">
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to user_path(current_user.id) do %>
+          <span class="glyphicon glyphicon-home" aria-hidden="true"><span/> Home
             <% end %>
           </li>
-          <li nav-item>
+          <li>
             <%= link_to users_path do%>
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
             <% end %>
           </li>
-          <li nav-item>
-            <%= link_to books_path(current_user.id) do%>
-            <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers
+          <li>
+            <%= link_to books_path do%>
+            <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Books
             <% end %>
           </li>
-          <li nav-item>
+          <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
             <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout
             <% end %>
           </li>
           <% else %>
-          <li nav-item>
+          <li>
             <%= link_to root_path do %>
             <i class="fas fa-home"></i> Home
             <% end %>
           </li>
-          <li nav-item>
+          <li>
             <%= link_to home_about_path do %>
             <i class="fas fa-link"></i> About
             <% end %>
           </li>
-          <li nav-item>
+          <li>
             <%= link_to new_user_registration_path do %>
             <i class="fas fa-user-check"></i> sign up
             <% end %>
           </li>
-          <li nav-item>
+          <li>
             <%= link_to new_user_session_path do %>
-            <i class="fas fa-sign-in-alt"></i> log in
+            <i class="fas fa-sign-in-alt"></i> login
             <% end %>
           </li>
           <% end %>
         </ul>
-      </div>
+      </nav>
     </div>
   </header><!-- /header -->
-  <div class="container">
-    <%= render 'layouts/notifications' %>
     <%= yield %>
-    </div>
-      <small class="offset-8">©CopyRight Infratop.inc</small>
-    </div>
-  </div>
+  <small class="offset-8">©CopyRight Infratop.inc</small>
 </body>
 </html>
