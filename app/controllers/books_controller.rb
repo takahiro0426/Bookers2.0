@@ -9,9 +9,11 @@ class BooksController < ApplicationController
 	end
 
 	def show
+		@comments = BookComment.all
 		@book = Book.find(params[:id])
 		@user = @book.user
 		@review = Book.new
+		@book_comment = BookComment.new
 	end
 
 	def edit
