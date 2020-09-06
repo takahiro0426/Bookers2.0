@@ -6,15 +6,17 @@
   <table class="table">
     <tr><th>name</th><td><%= user.name %></td></tr>
     <tr><th>introduction</th><td><%= user.introduction %></td></tr>
+    <tr><th><%= render 'users/follow_form' %></th></tr>
+    <tr><th><%= render 'users/stats' %></th></tr>
   </table>
 
   <% if current_user.id == user.id %>
-  <%= link_to edit_user_path(user) do %>
-  <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
-  <% end %>
+    <%= link_to edit_user_path(user) do %>
+    <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+    <% end %>
   <% else %>
-  <%= link_to user_path(current_user.id) do %>
-  <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
-  <% end %>
+    <%= link_to user_path(current_user.id) do %>
+    <span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+    <% end %>
   <% end %>
 </div>
